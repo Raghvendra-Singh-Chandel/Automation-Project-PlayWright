@@ -11,7 +11,7 @@ exports.SignUp = class SignUp
         this.last_name = page.locator('[formcontrolname="lastName"]')
         this.email = page.locator('[formcontrolname="userEmail"]')
         this.phone_number = page.locator('#userMobile')
-        this.occupation = page.selectOption('[formcontrolname="occupation"]','Engineer')
+      //  this.occupation = page.selectOption('[formcontrolname="occupation"]','Engineer')
         this.gender = page.locator('[formcontrolname="gender"]')
         this.password = page.locator('#userPassword')
         this.confirm_password = page.locator('[formcontrolname="confirmPassword"]')
