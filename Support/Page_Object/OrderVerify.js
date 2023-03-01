@@ -1,6 +1,5 @@
 const {expect}   = require('@playwright/test')
-const {API_call} = require ('../API_Utils/LoginAPI')
-import orderID from "../API_Utils/LoginAPI"
+
 
 
 exports.OrderVerify = class OrderVerify
@@ -19,19 +18,18 @@ exports.OrderVerify = class OrderVerify
     async orderVerify(orderID)
     {
         await this.order_btn.click()
-        for (let i = 0; i < 100; ++i) 
+        for (let i = 0; i < 8; ++i) 
         {
-            const rowOrderId = await this.t_row.nth(i).locator("th").textContent();
+            const rowOrderId = await this.t_row.nth(i).locator("th").textContent()
             if (orderID.includes(rowOrderId)) 
             {
-                await this.t_row.nth(i).locator("button").first().click();
+                await this.t_row.nth(i).locator("button").first().click()
           
                 break;
             }
         }
-        const orderIdDetails = await this.page.locator(".col-text").textContent();
-        await this.page.pause();
-        expect(orderID.includes(orderIdDetails)).toBeTruthy();
+        const orderIdDetails = await this.page.locator(".col-text").textContent()
+        expect(orderID.includes(orderIdDetails)).toBeTruthy()
 
     }
 }

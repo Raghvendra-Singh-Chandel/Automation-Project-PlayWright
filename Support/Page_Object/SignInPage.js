@@ -12,7 +12,7 @@ exports.SignIn = class SignIn
     }
 
 
-    async GoTo()
+    async GoTo_LoginPage()
     {
         await this.page.goto('https://rahulshettyacademy.com/client')
     }
