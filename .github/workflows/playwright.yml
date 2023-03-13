@@ -29,7 +29,7 @@ jobs:
         path: playwright-report/
         retention-days: 30
     - name: Slack Notification
-    - uses: act10ns/slack@v1
+      uses: act10ns/slack@v1
       with:
         status: ${{job.status}}
         channel: github-action-report
