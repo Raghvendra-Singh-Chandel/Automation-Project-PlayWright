@@ -8,6 +8,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.31.1"
+    "@playwright/test": "^1.31.1",
+    "allure-playwright": "^2.0.0"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.21.0"
   }
 }
