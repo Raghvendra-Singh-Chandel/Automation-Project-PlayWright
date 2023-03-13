@@ -5,6 +5,7 @@ const {SignIn} = require('../Page_Object/SignInPage')
 const {OrderProduct} = require('../Page_Object/OrderProduct')
 const { API_call } = require('../API_Utils/LoginAPI')
 const {OrderVerify} = require('../Page_Object/OrderVerify')
+const{PlaceOrder}  = require('../Page_Object/PlaceOrder')
 
 
 
@@ -43,7 +44,14 @@ exports.test = base.test.extend
     {
         const VerifyOrder = new OrderVerify(page)
         await use(VerifyOrder)
+    },
+
+    OrderPlace: async({page},use)=>
+    {
+        const OrderPlace = new PlaceOrder(page)
+        await use(OrderPlace)
     }
+    
 
 
 

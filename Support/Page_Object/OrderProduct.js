@@ -27,8 +27,8 @@ exports.OrderProduct = class OrderProduct
             console.log(productsearch)
             if (await productsearch == this.product_name)
           {
-            this.product.locator('text= Add To Cart').nth(i).click()
-            await this.page.waitForLoadState('networkidle')
+            await this.product.locator('text= Add To Cart').nth(i).click()
+            
             break
           }
 
@@ -41,6 +41,10 @@ exports.OrderProduct = class OrderProduct
     {
         await this.cart.click()
         await expect(this.page).toHaveURL('https://rahulshettyacademy.com/client/dashboard/cart')
+        await this.page.waitForSelector('text=Checkout',
+              {
+                state: 'visible',
+              })
         await this.checkout.click()
 
     }
