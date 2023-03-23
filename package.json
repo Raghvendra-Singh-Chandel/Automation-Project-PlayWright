@@ -12,6 +12,8 @@
     "allure-playwright": "^2.0.0"
   },
   "dependencies": {
-    "allure-commandline": "^2.21.0"
+    "allure-commandline": "^2.21.0",
+    "D": "^1.0.0",
+    "playwright-slack-report": "^1.1.2"
   }
 }

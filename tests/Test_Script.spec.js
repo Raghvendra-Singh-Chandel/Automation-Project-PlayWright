@@ -60,15 +60,3 @@ test('Verify End to end testing', async ({ registerPage,loginPage,orderSelectedP
 
 })
 
-
-
-
-// Test different Scenario
-// test('file upload test', async({page})=>
-// {
-//    let file_location = '../Support/All_File/first.jpg'
-//    await page.goto('https://kitchen.applitools.com/ingredients/file-picker')
-//    await page.pause()
-//    await page.setInputFiles('#photo-upload',file_location)
-//    await page.pause()
-// })
