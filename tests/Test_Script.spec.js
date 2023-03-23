@@ -25,10 +25,11 @@ test('Login and create order', async({API,VerifyOrder,loginPage }) =>
 
 
 
-test('Verify End to end testing', async ({ registerPage,loginPage,orderSelectedProduct}) => 
+test('Verify End to end testing', async ({ registerPage,loginPage,orderSelectedProduct,OrderPlace}) => 
 {
   
-    await test.step('Signup functionality', async () => {
+    await test.step('Signup functionality', async () => 
+    {
 
         // calling locator function
         await registerPage.GoTo()
@@ -37,16 +38,25 @@ test('Verify End to end testing', async ({ registerPage,loginPage,orderSelectedP
 
     })
 
-    await test.step('login functionality', async () => {
+    await test.step('login functionality', async () => 
+    {
         await loginPage.GoTo_LoginPage()
         await loginPage.Login()
     })
 
-    await test.step('Create Order', async () => {
+    await test.step('Create Order', async () => 
+    {
         await orderSelectedProduct.ProductAddToCart()
         await orderSelectedProduct.CheckoutProduct()
+    })
+
+    await test.step('PlaceOrder', async()=>
+    {
+        await OrderPlace.getOrderPlace()
+
     })
 
 
 
 })
+
