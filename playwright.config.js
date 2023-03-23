@@ -34,7 +34,7 @@ module.exports = defineConfig({
     [
       "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
       {
-        channels: ["pw-tests", "ci"], // provide one or more Slack channels
+        channels: ["github-action-report", "ci"], // provide one or more Slack channels
         sendResults: "always", // "always" , "on-failure", "off"
       },
     ],
