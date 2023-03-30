@@ -31,13 +31,13 @@ module.exports = defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    // [
-    //   "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
-    //   {
-    //     channels: ["github-action-report"], // provide one or more Slack channels
-    //     sendResults: "always", // "always" , "on-failure", "off"
-    //   },
-    // ],
+    [
+      "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
+      {
+        channels: ["pw-tests", "ci"], // provide one or more Slack channels
+        sendResults: "always", // "always" , "on-failure", "off"
+      },
+    ],
     ["html"], // other reporters
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
