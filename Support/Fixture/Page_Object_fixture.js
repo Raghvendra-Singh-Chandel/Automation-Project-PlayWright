@@ -3,7 +3,7 @@ const {request} = require('@playwright/test')
 const{SignUp} = require('../Page_Object/SignupPage')
 const {SignIn} = require('../Page_Object/SignInPage')
 const {OrderProduct} = require('../Page_Object/OrderProduct')
-const { API_call } = require('../API_Utils/LoginAPI')
+const { API_call } = require('../API_Utils/loginApiUtils')
 const {OrderVerify} = require('../Page_Object/OrderVerify')
 
 
