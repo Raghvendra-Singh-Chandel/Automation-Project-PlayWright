@@ -1,23 +1,32 @@
-const { expect } = require('@playwright/test')
+const {expect} = require('@playwright/test') 
+import * as loginData from "../testData/loginTestdata.json"
 
 
-// fetch locator of the element 
-exports.signIn = class signIn {
-    constructor(page) {
-        this.page = page;
-        this.email = page.locator('[formcontrolname="userEmail"]');
-        this.password = page.locator('[formcontrolname="userPassword"]');
-        this.login = page.getByRole('Button', { name: 'Login' });
+exports.SignIn = class SignIn
+{
+    constructor(page, isMobile)
+    {
+        this.page = page
+        this.isMobile = isMobile
+        this.confiramtionToast = page.locator("[aria-label='Login Successfully']")
+        this.email = page.locator('[formcontrolname="userEmail"]')
+        this.password = page.locator('[formcontrolname="userPassword"]')
+        this.login = page.getByRole('Button', {name: 'Login'})
     }
 
-// create locator function to fetch use the locator in the test script
-    async goToLoginPage() {
-        await this.page.goto('https://rahulshettyacademy.com/client')
-    };
-    async loginToApplication() {
-        await this.email.fill('test_1@gmail.com')
-        await this.password.fill('Test@123')
-        await this.login.click()
-    };
 
-};
+    async GoTo_LoginPage()
+    {
+        await this.page.goto(loginData.baseURL)
+    }
+    async Login()
+    {
+        await this.email.fill(loginData.email)
+        await this.password.fill(loginData.password)
+        await this.login.click()
+        await this.confiramtionToast.waitFor({state:"visible"})
+        await expect(this.confiramtionToast).toHaveText(loginData.loginSuccesfullyToastMessage)
+        await this.confiramtionToast.waitFor({state:"hidden"})
+    }
+
+}

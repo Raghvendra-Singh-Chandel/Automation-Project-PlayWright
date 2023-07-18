@@ -13,7 +13,7 @@ const { defineConfig, devices } = require('@playwright/test');
 module.exports = defineConfig({
   testDir: './tests',
   /* Maximum time one test can run for. */
-  timeout: 3000 * 1000,
+  timeout: 30 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -26,20 +26,11 @@ module.exports = defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    // [
-    //   "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
-    //   {
-    //     channels: ["github-action-report"], // provide one or more Slack channels
-    //     sendResults: "always", // "always" , "on-failure", "off"
-    //   },
-    // ],
-    ["html"], // other reporters
-  ],
+  reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
@@ -48,7 +39,8 @@ module.exports = defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace:'on',
+    screenshot: "only-on-failure"
   },
 
   /* Configure projects for major browsers */
@@ -58,11 +50,21 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    /* Test against mobile viewports. */
     // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
     // },
+
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
+
+    /* Test against mobile viewports. */
+    {
+      name: 'Mobile Chrome',
+      use: { ...devices['Pixel 5'] },
+    },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
